@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectToMongoDb = require("./connection");
 const {productRouter} = require("./routes/product")
+const bookingRouter = require("./routes/booking")
 require('dotenv').config();
 
 const mongoUrl = process.env.MONGO_URL
@@ -12,5 +13,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/products", productRouter);
+app.use("/book", bookingRouter);
 
 app.listen(3000, () => console.log('Server running on port 3000'));
